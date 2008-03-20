@@ -1,0 +1,18 @@
+# AlCaReco for track based calibration using min. bias events
+
+  module ALCARECOSiStripCalMinBiasHLT = hltHighLevel from "HLTrigger/HLTfilters/data/hltHighLevel.cfi"
+  replace ALCARECOSiStripCalMinBiasHLT.andOr = true # choose logical OR between Triggerbits
+  replace ALCARECOSiStripCalMinBiasHLT.HLTPaths = {"HLTMinBias","HLTMinBiasPixel"}
+
+  module ALCARECOSiStripCalMinBias = CalibrationTrackSelector from "Calibration/TkAlCaRecoProducers/data/CalibrationTrackSelector.cfi"
+	
+    replace ALCARECOSiStripCalMinBias.applyBasicCuts = true
+	replace ALCARECOSiStripCalMinBias.ptMin = 1.5 #GeV
+	replace ALCARECOSiStripCalMinBias.etaMin = -3.5
+	replace ALCARECOSiStripCalMinBias.etaMax = 3.5
+	replace ALCARECOSiStripCalMinBias.nHitMin =  0
+
+  sequence seqALCARECOSiStripCalMinBias = {ALCARECOSiStripCalMinBiasHLT & ALCARECOSiStripCalMinBias }  
+#     sequence seqALCARECOSiStripCalMinBias = {ALCARECOSiStripCalMinBias }
+
+

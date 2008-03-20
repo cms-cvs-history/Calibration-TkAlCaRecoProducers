@@ -1,0 +1,14 @@
+# AlCaReco for track based calibration using MinBias events
+
+  block OutALCARECOSiStripCalMinBias = { 
+    untracked vstring outputCommands = { 
+      "drop *" ,
+      "keep *_ALCARECOSiStripCalMinBias_*_*",  
+      "keep *_siStripClusters_*_ALL",
+      "keep *_siPixelClusters_*_ALL"
+    }
+    untracked PSet SelectEvents = {
+      vstring SelectEvents = { "pathALCARECOSiStripCalMinBias" }
+    }
+  }
+
