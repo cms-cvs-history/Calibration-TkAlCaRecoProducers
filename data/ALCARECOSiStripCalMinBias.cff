@@ -7,12 +7,12 @@
   module ALCARECOSiStripCalMinBias = CalibrationTrackSelector from "Calibration/TkAlCaRecoProducers/data/CalibrationTrackSelector.cfi"
 	
     replace ALCARECOSiStripCalMinBias.applyBasicCuts = true
-	replace ALCARECOSiStripCalMinBias.ptMin = 1.5 #GeV
+	replace ALCARECOSiStripCalMinBias.ptMin = 0.8 #GeV
 	replace ALCARECOSiStripCalMinBias.etaMin = -3.5
 	replace ALCARECOSiStripCalMinBias.etaMax = 3.5
 	replace ALCARECOSiStripCalMinBias.nHitMin =  0
 
-  sequence seqALCARECOSiStripCalMinBias = {ALCARECOSiStripCalMinBiasHLT & ALCARECOSiStripCalMinBias }  
+     sequence seqALCARECOSiStripCalMinBias = {ALCARECOSiStripCalMinBiasHLT & ALCARECOSiStripCalMinBias }  
 #     sequence seqALCARECOSiStripCalMinBias = {ALCARECOSiStripCalMinBias }
 
 
