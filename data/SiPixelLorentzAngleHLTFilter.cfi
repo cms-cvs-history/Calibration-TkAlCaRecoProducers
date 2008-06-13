@@ -3,13 +3,13 @@ module SiPixelLorentzAngleHLTFilter = HLTHighLevel {
 	bool byName = true
 	bool andOr= true
 	vstring HLTPaths ={
-		"HLT1MuonIso",
-		"HLT2MuonNonIso",
+		"HLT_IsoMu11",
+		"HLT_DoubleMu3",
 		//"CandHLT2MuonIso",
-		"HLT2MuonJPsi",
-		"HLT2MuonUpsilon",
-		"HLT2MuonZ",
-		"HLT2MuonSameSign"
+		"HLT_DoubleMu3_JPsi",
+		"HLT_DoubleMu3_Upsilon",
+		"HLT_DoubleMu7_Z",
+		"HLT_DoubleMu3_SameSign"
 		//"CandHLT1MuonPrescalePt3",
 		//"CandHLT1MuonPrescalePt5",
 		//"CandHLT1MuonPrescalePt7x7",
