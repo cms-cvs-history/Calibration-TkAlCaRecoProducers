@@ -10,7 +10,7 @@ ALCARECOSiStripCalZeroBiasHLT = HLTrigger.HLTfilters.hltHighLevel_cfi.hltHighLev
 #        #Random Trigger for Cosmic Runs
 #        'RandomPath'
 #        ],
-    eventSetupPathsKey='SiStripCalZeroBias',
+    eventSetupPathsKey='SiStripCalZeroBiasHI',
     throw = False # tolerate triggers stated above, but not available
 )
 
@@ -18,6 +18,12 @@ ALCARECOSiStripCalZeroBiasHLT = HLTrigger.HLTfilters.hltHighLevel_cfi.hltHighLev
 # AND respective partition is in the run (according to FED information)
 import CalibTracker.SiStripCommon.SiStripDCSFilter_cfi
 DCSStatusForSiStripCalZeroBias = CalibTracker.SiStripCommon.SiStripDCSFilter_cfi.siStripDCSFilter.clone()
+
+# Select pp-like events based on the pixel cluster multiplicity
+import HLTrigger.special.hltPixelActivityFilter_cfi
+HLTPixelActivityFilterForSiStripCalZeroBias = HLTrigger.special.hltPixelActivityFilter_cfi.hltPixelActivityFilter.clone()
+HLTPixelActivityFilterForSiStripCalZeroBias.maxClusters = 500
+HLTPixelActivityFilterForSiStripCalZeroBias.inputTag    = 'siPixelClusters'
 
 # Include masking only from Cabling and O2O
 import CalibTracker.SiStripESProducers.SiStripQualityESProducer_cfi
@@ -64,4 +70,4 @@ qualityStatistics = cms.EDAnalyzer("SiStripQualityStatistics",
 )
 
 # Sequence #
-seqALCARECOSiStripCalZeroBias = cms.Sequence(ALCARECOSiStripCalZeroBiasHLT*DCSStatusForSiStripCalZeroBias*calZeroBiasClusters*APVPhases*consecutiveHEs)
+seqALCARECOSiStripCalZeroBias = cms.Sequence(ALCARECOSiStripCalZeroBiasHLT*HLTPixelActivityFilterForSiStripCalZeroBias*DCSStatusForSiStripCalZeroBias*calZeroBiasClusters*APVPhases*consecutiveHEs)
